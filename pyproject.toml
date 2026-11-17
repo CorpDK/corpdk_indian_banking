@@ -1,0 +1,30 @@
+[project]
+name = "corpdk_indian_banking"
+authors = [{ name = "CorpDK", email = "ops@corpdk.local" }]
+description = "Indian bank and card statement import, evidence vault, and Bank Transaction creation"
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = ["version"]
+license = { text = "MIT" }
+dependencies = ["xlrd>=2.0.1", "pymupdf>=1.24.0"]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=16.0.0,<17.0.0"
+
+[tool.bench.dev-dependencies]
+corpdk_indian_banking = []
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["W191"]
+
+[tool.ruff.format]
+indent-style = "tab"

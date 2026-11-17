@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "creation": "2026-11-16 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "file_role",
+  "drive_logical_path",
+  "drive_entity",
+  "vault_status",
+  "source_sha256"
+ ],
+ "fields": [
+  {
+   "fieldname": "file_role",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Role"
+  },
+  {
+   "fieldname": "drive_logical_path",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Drive Path"
+  },
+  {
+   "fieldname": "drive_entity",
+   "fieldtype": "Data",
+   "label": "Drive Entity"
+  },
+  {
+   "fieldname": "vault_status",
+   "fieldtype": "Data",
+   "label": "Vault Status"
+  },
+  {
+   "fieldname": "source_sha256",
+   "fieldtype": "Data",
+   "label": "SHA256"
+  }
+ ],
+ "istable": 1,
+ "module": "CorpDK Indian Banking",
+ "name": "Statement Import File",
+ "permissions": []
+}
