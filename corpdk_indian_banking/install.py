@@ -10,7 +10,7 @@ PARSERS = [
 		"primary_extension": ".xls",
 		"companion_extension": ".pdf",
 		"import_primary_type": "xls",
-		"parser_version": "2026.11.0",
+		"parser_version": "2026.11.1",
 		"is_active": 1,
 	},
 	{
@@ -20,10 +20,29 @@ PARSERS = [
 		"primary_extension": ".pdf",
 		"companion_extension": "",
 		"import_primary_type": "pdf",
-		"parser_version": "2026.11.0",
+		"parser_version": "2026.11.1",
 		"is_active": 1,
 	},
 ]
+
+
+def _ensure_drive_team_link_titles() -> None:
+	"""Same as Customize Form on Drive Team → Show Title in Link Fields (no Drive app code fork)."""
+	if frappe.db.exists(
+		"Property Setter",
+		{"doc_type": "Drive Team", "property": "show_title_field_in_link", "doctype_or_field": "DocType"},
+	):
+		return
+	frappe.make_property_setter(
+		{
+			"doctype": "Drive Team",
+			"doctype_or_field": "DocType",
+			"property": "show_title_field_in_link",
+			"property_type": "Check",
+			"value": "1",
+		},
+		is_system_generated=True,
+	)
 
 
 def _ensure_role() -> None:
@@ -74,12 +93,14 @@ def _ensure_settings() -> None:
 
 
 def after_install() -> None:
+	_ensure_drive_team_link_titles()
 	_ensure_role()
 	_ensure_settings()
 	frappe.db.commit()
 
 
 def after_migrate() -> None:
+	_ensure_drive_team_link_titles()
 	_ensure_parsers()
 	_ensure_settings()
 	frappe.db.commit()

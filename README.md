@@ -6,6 +6,8 @@ Design notes live in the private [CorpDK/ERP](https://github.com/CorpDK/ERP) rep
 
 **Requires:** `erpnext`, `drive` on the site.
 
+On install/migrate, if missing, the app adds a **Property Setter** on **Drive Team** (`show_title_field_in_link`) so Link fields show the team **title** instead of the hash id — equivalent to a one-time desk Customize Form; we do **not** patch the Drive app. Drop that hook once upstream Drive ships the default.
+
 ## Install
 
 ```bash
