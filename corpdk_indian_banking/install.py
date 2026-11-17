@@ -25,45 +25,6 @@ PARSERS = [
 	},
 ]
 
-DEFAULT_CONFIGS = [
-	{
-		"bank_account": "ICICI Savings - Personal - ICICI Bank",
-		"enabled": 1,
-		"statement_parser": "icici_jasper_xls",
-		"account_mask": "6788",
-		"drive_account_root": "Banking/ICICI Savings - Personal/",
-		"statement_kind": "Savings",
-		"transaction_id_prefix": "ICICI|",
-		"naming_series_rule": "transaction_year",
-		"import_requires_primary": "xls",
-		"recommend_companion_pdf": 1,
-	},
-	{
-		"bank_account": "ICICI PPF - Personal - ICICI Bank",
-		"enabled": 1,
-		"statement_parser": "icici_jasper_xls",
-		"account_mask": "4018",
-		"drive_account_root": "Banking/ICICI PPF - Personal/",
-		"statement_kind": "PPF",
-		"transaction_id_prefix": "ICICI-PPF|",
-		"naming_series_rule": "transaction_year",
-		"import_requires_primary": "xls",
-		"recommend_companion_pdf": 1,
-	},
-	{
-		"bank_account": "CC Amex Rewards - Personal - American Express",
-		"enabled": 1,
-		"statement_parser": "amex_in_rewards_pdf",
-		"account_mask": "",
-		"drive_account_root": "Banking/CC Amex Rewards - Personal/",
-		"statement_kind": "Amex",
-		"transaction_id_prefix": "AMEX|",
-		"naming_series_rule": "insertion_year",
-		"import_requires_primary": "pdf",
-		"recommend_companion_pdf": 0,
-	},
-]
-
 
 def _ensure_role() -> None:
 	if frappe.db.exists("Role", "Statement Import Manager"):
@@ -84,27 +45,31 @@ def _ensure_parsers() -> None:
 			doc.insert(ignore_permissions=True)
 
 
-def _personal_evidence_team() -> str | None:
-	return frappe.db.get_value("Drive Team", {"title": "Personal Evidence"}, "name")
+def _install_default_drive_team() -> str | None:
+	"""Site-specific install default: site_config key ``indian_banking_default_drive_team`` (Drive Team name)."""
+	raw = frappe.conf.get("indian_banking_default_drive_team")
+	if not raw:
+		return None
+	if not frappe.db.exists("Drive Team", raw):
+		frappe.log_error(
+			title="Indian Banking install",
+			message=f"site_config indian_banking_default_drive_team={raw!r} is not a Drive Team name",
+		)
+		return None
+	return raw
 
 
 def _ensure_settings() -> None:
 	_ensure_parsers()
-	team = _personal_evidence_team()
 	doc = frappe.get_single("Banking Statement Settings")
-	if team and not doc.default_drive_team:
-		doc.default_drive_team = team
+	if not doc.default_drive_team:
+		team = _install_default_drive_team()
+		if team:
+			doc.default_drive_team = team
 	if not doc.default_statements_subpath:
 		doc.default_statements_subpath = "Statements/"
 	if doc.reject_cross_fy is None:
 		doc.reject_cross_fy = 1
-	existing = {r.bank_account for r in doc.bank_account_configs or []}
-	for cfg in DEFAULT_CONFIGS:
-		if cfg["bank_account"] in existing:
-			continue
-		if not frappe.db.exists("Bank Account", cfg["bank_account"]):
-			continue
-		doc.append("bank_account_configs", cfg)
 	doc.save(ignore_permissions=True)
 
 
