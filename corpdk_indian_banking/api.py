@@ -6,6 +6,7 @@ import frappe
 from frappe.utils.file_manager import save_file
 
 from corpdk_indian_banking.services.config import list_importable_accounts
+from corpdk_indian_banking.services.coverage_reconcile import reconcile_coverage
 from corpdk_indian_banking.services.import_service import path_from_uploaded_file, preview_import, run_import
 
 
@@ -53,6 +54,29 @@ def run_import_api(
 		fy_hint=fy_hint,
 		month_hint=month_hint,
 		vault_evidence=bool(vault_evidence),
+	)
+
+
+@frappe.whitelist()
+def reconcile_coverage_api(
+	bank_account: str | None = None,
+	from_year: int | None = None,
+	from_month: int | None = None,
+	to_year: int | None = None,
+	to_month: int | None = None,
+	skip_verified: int = 1,
+	force_reverify: int = 0,
+) -> dict:
+	"""Verify BT vs Drive evidence; refresh Statement Coverage Month; log issues (no BT changes)."""
+	frappe.has_permission("Banking Statement Settings", "write", throw=True)
+	return reconcile_coverage(
+		bank_account=bank_account or None,
+		from_year=from_year,
+		from_month=from_month,
+		to_year=to_year,
+		to_month=to_month,
+		skip_verified=bool(skip_verified),
+		force_reverify=bool(force_reverify),
 	)
 
 

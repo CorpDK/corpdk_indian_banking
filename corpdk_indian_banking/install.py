@@ -54,13 +54,19 @@ def _ensure_role() -> None:
 
 
 def _ensure_parsers() -> None:
+	from corpdk_indian_banking.corpdk_indian_banking.doctype.statement_parser.statement_parser import (
+		mark_parser_sync,
+	)
+
 	for row in PARSERS:
 		if frappe.db.exists("Statement Parser", row["parser_code"]):
 			doc = frappe.get_doc("Statement Parser", row["parser_code"])
 			doc.update({k: v for k, v in row.items() if k != "parser_code"})
+			mark_parser_sync(doc)
 			doc.save(ignore_permissions=True)
 		else:
 			doc = frappe.get_doc({"doctype": "Statement Parser", **row})
+			mark_parser_sync(doc)
 			doc.insert(ignore_permissions=True)
 
 
@@ -96,6 +102,9 @@ def after_install() -> None:
 	_ensure_drive_team_link_titles()
 	_ensure_role()
 	_ensure_settings()
+	from corpdk_indian_banking.desk_sync import sync_standard_desk_navigation
+
+	sync_standard_desk_navigation()
 	frappe.db.commit()
 
 
@@ -103,4 +112,7 @@ def after_migrate() -> None:
 	_ensure_drive_team_link_titles()
 	_ensure_parsers()
 	_ensure_settings()
+	from corpdk_indian_banking.desk_sync import sync_standard_desk_navigation
+
+	sync_standard_desk_navigation()
 	frappe.db.commit()

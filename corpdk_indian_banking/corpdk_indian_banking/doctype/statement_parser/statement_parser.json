@@ -20,6 +20,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Parser Code",
+   "read_only": 1,
    "reqd": 1,
    "unique": 1
   },
@@ -28,35 +29,41 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Title",
+   "read_only": 1,
    "reqd": 1
   },
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
-   "label": "Description"
+   "label": "Description",
+   "read_only": 1
   },
   {
    "default": ".xls",
    "fieldname": "primary_extension",
    "fieldtype": "Data",
-   "label": "Primary Extension"
+   "label": "Primary Extension",
+   "read_only": 1
   },
   {
    "fieldname": "companion_extension",
    "fieldtype": "Data",
-   "label": "Companion Extension"
+   "label": "Companion Extension",
+   "read_only": 1
   },
   {
    "default": "xls",
    "fieldname": "import_primary_type",
    "fieldtype": "Select",
    "label": "Import Primary",
-   "options": "xls\npdf"
+   "options": "xls\npdf",
+   "read_only": 1
   },
   {
    "fieldname": "parser_version",
    "fieldtype": "Data",
-   "label": "Parser Version"
+   "label": "Parser Version",
+   "read_only": 1
   },
   {
    "default": "1",
@@ -72,8 +79,6 @@
  "owner": "Administrator",
  "permissions": [
   {
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
@@ -85,6 +90,7 @@
   },
   {
    "read": 1,
+   "write": 1,
    "role": "Statement Import Manager"
   },
   {

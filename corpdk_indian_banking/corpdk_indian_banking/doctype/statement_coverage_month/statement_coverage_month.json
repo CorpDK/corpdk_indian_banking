@@ -11,8 +11,12 @@
   "xls_in_drive",
   "pdf_in_drive",
   "transactions_imported",
+  "bt_row_count",
+  "parsed_row_count",
   "evidence_status",
-  "last_batch"
+  "last_batch",
+  "last_verified_at",
+  "last_verification_run"
  ],
  "fields": [
   {
@@ -53,6 +57,18 @@
    "label": "Transactions Imported"
   },
   {
+   "fieldname": "bt_row_count",
+   "fieldtype": "Int",
+   "label": "BT Row Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "parsed_row_count",
+   "fieldtype": "Int",
+   "label": "Parsed Row Count (verify)",
+   "read_only": 1
+  },
+  {
    "fieldname": "evidence_status",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -64,6 +80,19 @@
    "fieldtype": "Link",
    "label": "Last Batch",
    "options": "Statement Import Batch"
+  },
+  {
+   "fieldname": "last_verified_at",
+   "fieldtype": "Datetime",
+   "label": "Last Verified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_verification_run",
+   "fieldtype": "Link",
+   "label": "Last Verification Run",
+   "options": "Statement Coverage Verification Run",
+   "read_only": 1
   }
  ],
  "module": "CorpDK Indian Banking",

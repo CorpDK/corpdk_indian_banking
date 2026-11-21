@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "autoname": "format:STMT-CVR-{YYYY}-{#####}",
+ "creation": "2026-11-17 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "column_break_1",
+  "started_at",
+  "completed_at",
+  "triggered_by",
+  "account_scope",
+  "summary_json",
+  "issue_count"
+ ],
+ "fields": [
+  {
+   "default": "Running",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Running\nCompleted\nFailed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At"
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At"
+  },
+  {
+   "fieldname": "triggered_by",
+   "fieldtype": "Link",
+   "label": "Triggered By",
+   "options": "User"
+  },
+  {
+   "fieldname": "account_scope",
+   "fieldtype": "Small Text",
+   "label": "Bank Accounts"
+  },
+  {
+   "fieldname": "summary_json",
+   "fieldtype": "Code",
+   "label": "Summary",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "issue_count",
+   "fieldtype": "Int",
+   "label": "Issues Logged",
+   "read_only": 1
+  }
+ ],
+ "module": "CorpDK Indian Banking",
+ "name": "Statement Coverage Verification Run",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Statement Import Manager",
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,47 @@
+{
+ "app": "corpdk_indian_banking",
+ "creation": "2026-11-18 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Dock",
+ "idx": 0,
+ "items": [
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "asset-hand-soft",
+   "link_to": "Indian Banking Home",
+   "link_type": "Sidebar",
+   "title": "Home"
+  },
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "shelf-rack-soft",
+   "link_to": "Indian Banking Import",
+   "link_type": "Sidebar",
+   "title": "Import"
+  },
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "quality-seal-soft",
+   "link_to": "Indian Banking Coverage",
+   "link_type": "Sidebar",
+   "title": "Coverage"
+  },
+  {
+   "added": 0,
+   "hidden": 0,
+   "icon": "sliders-soft",
+   "link_to": "Indian Banking Settings",
+   "link_type": "Sidebar",
+   "title": "Settings"
+  }
+ ],
+ "modified": "2026-11-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "name": "corpdk_indian_banking",
+ "owner": "Administrator",
+ "standard": 1,
+ "user": ""
+}

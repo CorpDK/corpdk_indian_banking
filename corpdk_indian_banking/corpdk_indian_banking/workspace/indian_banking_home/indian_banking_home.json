@@ -1,0 +1,105 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"ibHdr01\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>CorpDK Indian Banking</b></span>\",\"col\":12}},{\"id\":\"ibSp01\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ibSh01\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Statement Coverage Overview\",\"col\":4}},{\"id\":\"ibSh02\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Banking Statement Settings\",\"col\":4}},{\"id\":\"ibSh03\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Statement Import Batch\",\"col\":4}}]",
+ "creation": "2026-11-18 00:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "landmark",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Indian Banking Home",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Coverage",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Statement Coverage Overview",
+   "link_count": 0,
+   "link_to": "Statement Coverage Overview",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Import",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Statement Import Batch",
+   "link_count": 0,
+   "link_to": "Statement Import Batch",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 0,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Banking Statement Settings",
+   "link_count": 0,
+   "link_to": "Banking Statement Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-18 00:00:00.000000",
+ "module": "CorpDK Indian Banking",
+ "name": "Indian Banking Home",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "label": "Statement Coverage Overview",
+   "link_to": "Statement Coverage Overview",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Banking Statement Settings",
+   "link_to": "Banking Statement Settings",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Statement Import Batch",
+   "link_to": "Statement Import Batch",
+   "type": "DocType"
+  }
+ ],
+ "title": "Indian Banking Home"
+}

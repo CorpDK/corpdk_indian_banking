@@ -1,0 +1,30 @@
+{
+ "add_total_row": 0,
+ "creation": "2026-11-17 12:00:00.000000",
+ "disabled": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "modified": "2026-11-17 12:00:00.000000",
+ "module": "CorpDK Indian Banking",
+ "name": "Statement Coverage Overview",
+ "ref_doctype": "Statement Coverage Month",
+ "report_name": "Statement Coverage Overview",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Statement Import Manager"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  }
+ ]
+}

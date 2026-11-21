@@ -7,12 +7,16 @@ app_license = "MIT"
 
 required_apps = ["erpnext", "drive"]
 
+app_include_icons = [
+	"/assets/corpdk_indian_banking/icons/module-icons.svg",
+]
+
 add_to_apps_screen = [
 	{
 		"name": app_name,
 		"logo": "/assets/corpdk_indian_banking/images/indian-banking.svg",
 		"title": app_title,
-		"route": "/app/banking-statement-settings",
+		"route": "/desk/indian-banking-home/indian-banking-home",
 		"has_permission": "corpdk_indian_banking.permissions.has_app_permission",
 	},
 ]
